@@ -54,6 +54,29 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
       expect(response).to be_successful
     end
+
+    context "filters" do
+      it "returns users that match query" do
+        user_1 = create(:user, first_name: "Foo 1", gender: "male")
+        user_2 = create(:user_2, first_name: "Foo 2", gender: "female")
+        user_3 = create(:user_3, first_name: "Bar", gender: "male")
+
+        get :index, params: {sort: "first_name"}, session: valid_session
+        expect(JSON.parse(response.body).count).to eq 3
+
+        # Test response is sorted correctly
+        expect(JSON.parse(response.body).map{|u| u['first_name']}).to eql(
+          ["Bar", "Foo 1", "Foo 2"])
+
+        get :index, params: {first_name: "foo"}, session: valid_session
+        expect(JSON.parse(response.body).count).to eq 2
+
+        get :index, params: {first_name: "foo", gender: "male"}, session: valid_session
+        expect(JSON.parse(response.body).count).to eq 1
+
+      end
+    end
+
   end
 
   describe "GET #show" do
