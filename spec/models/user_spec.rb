@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
     it "validates" do
       expect(User.new(email: 'foo@bar.com')).to validate_presence_of(:email)
       expect(User.new(email: 'foo@bar.com')).to validate_uniqueness_of(:email)
+      expect(User.new(email: 'foobar.com').invalid?).to eq true
     end
   end
 
