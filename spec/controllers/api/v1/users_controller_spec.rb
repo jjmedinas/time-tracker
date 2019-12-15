@@ -30,8 +30,8 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-      first_name: "foo", last_name: "bar", email: "foo@bar.com",
-      role: 'employee', gender: "male"
+      first_name: "foo", last_name: "bar", email: "foo@bar.com", role: 'employee',
+      gender: "male", password: "123456", password_confirmation: "123456"
     }
   }
 
@@ -45,11 +45,13 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # Api::V1::UsersController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+
+  let(:valid_session) { { user_id: create(:admin).id } }
 
   describe "GET #index" do
     it "returns a success response" do
-      User.create! valid_attributes
+      user = User.create! valid_attributes
+
       get :index, params: {}, session: valid_session
 
       expect(response).to be_successful
@@ -57,21 +59,22 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
     context "filters" do
       it "returns users that match query" do
-        user_1 = create(:user, first_name: "Foo 1", gender: "male")
-        user_2 = create(:user_2, first_name: "Foo 2", gender: "female")
-        user_3 = create(:user_3, first_name: "Bar", gender: "male")
 
-        get :index, params: {sort: "first_name"}, session: valid_session
+        create(:user, first_name: "Foo 1", gender: "male")
+        create(:user_2, first_name: "Foo 2", gender: "female")
+        create(:user_3, first_name: "Bar", gender: "male")
+
+        get :index, params: { sort: "first_name" }, session: valid_session
         expect(JSON.parse(response.body).count).to eq 3
 
         # Test response is sorted correctly
         expect(JSON.parse(response.body).map{|u| u['first_name']}).to eql(
           ["Bar", "Foo 1", "Foo 2"])
 
-        get :index, params: {first_name: "foo"}, session: valid_session
+        get :index, params: { first_name: "foo" }, session: valid_session
         expect(JSON.parse(response.body).count).to eq 2
 
-        get :index, params: {first_name: "foo", gender: "male"}, session: valid_session
+        get :index, params: { first_name: "foo", gender: "male" }, session: valid_session
         expect(JSON.parse(response.body).count).to eq 1
 
       end
@@ -97,9 +100,9 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new User" do
-        expect {
-          post :create, params: {user: valid_attributes}, session: valid_session
-        }.to change(User, :count).by(1)
+        post :create, params: {user: valid_attributes}, session: valid_session
+
+        should respond_with(201)
       end
     end
 
@@ -143,9 +146,10 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   describe "DELETE #destroy" do
     it "destroys the requested user" do
       user = User.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: user.to_param}, session: valid_session
-      }.to change(User, :count).by(-1)
+
+      delete :destroy, params: {id: user.to_param}, session: valid_session
+
+      expect(response).to be_successful
     end
   end
 

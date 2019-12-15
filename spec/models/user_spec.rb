@@ -10,10 +10,10 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "factory bot test" do
-    it "test it" do
-      user = build(:user)
-      expect(user.first_name).to eq "John"
+  describe "#downcase_email" do
+    it "downcases the email before creating the record" do
+      user = create(:user, email: "FoO@Bar.COm")
+      expect(user.email).to eq "foo@bar.com"
     end
   end
 end

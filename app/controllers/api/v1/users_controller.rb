@@ -1,9 +1,10 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authorize_admin!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   UserReducer = Rack::Reducer.new(
-    User.all,
+    User.where.not(role: "admin"),
     ->(first_name:) { where('lower(first_name) like ?', "%#{first_name.downcase}%") },
     ->(last_name:) { where('lower(last_name) like ?', "%#{last_name.downcase}%") },
     ->(email:) { where('lower(email) like ?', "%#{email.downcase}%") },
@@ -64,6 +65,7 @@ class Api::V1::UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:id, :first_name, :last_name, :email, :gender, :role)
+      params.require(:user).permit(:id, :first_name, :last_name, :email, :gender, :role,
+                                   :password, :password_confirmation)
     end
 end
