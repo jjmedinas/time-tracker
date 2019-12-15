@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2019_12_13_190513) do
   create_table "activity_logs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.boolean "active"
-    t.datetime "checkin"
-    t.datetime "checkout"
+    t.datetime "checked_in_at"
+    t.datetime "checked_out_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_activity_logs_on_user_id"

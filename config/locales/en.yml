@@ -30,4 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  errors:
+    requests:
+      not_allowed: "You're not allowed to perfom this action."
+    models:
+      cant_check_in: "Check in time already set. Can't to check in again."
+      cant_check_out: "Unable to check out. Please verify check in had place and hasn't already checked out"
