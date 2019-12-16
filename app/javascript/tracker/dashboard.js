@@ -18,7 +18,7 @@ $(document).ready(function() {
         window.location = '/dashboard'
       },
       error: function() {
-        alert('Error loggin in');
+        alert('Error logging in');
       },
       dataType: "json"
     });
