@@ -1,4 +1,4 @@
-/*!
+/*
 
  =========================================================
  * Material Dashboard - v2.1.1
@@ -51,7 +51,7 @@ var seq2 = 0,
 
 $(document).ready(function() {
 
-  $('body').bootstrapMaterialDesign();
+  // $('body').bootstrapMaterialDesign();
 
   $sidebar = $('.sidebar');
 
