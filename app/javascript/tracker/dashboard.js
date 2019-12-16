@@ -15,7 +15,7 @@ $(document).ready(function() {
       data: JSON.stringify(data),
       processData: false,
       success: function() {
-        alert('Logged in Correctly');
+        window.location = '/dashboard'
       },
       error: function() {
         alert('Error loggin in');
@@ -26,6 +26,24 @@ $(document).ready(function() {
     e.preventDefault();
   }
 
-
   $("#session-login").click( submitForm );
+
+  function logout( e ) {
+    $.ajax({
+      type: "DELETE",
+      url: "/api/v1/sessions",
+      contentType: "application/json",
+      success: function() {
+        window.location = '/'
+      },
+      error: function() {
+        alert('Error loggin out');
+      },
+      dataType: "json"
+    });
+
+    e.preventDefault();
+  }
+
+  $("#session-logout").click( logout );
 });

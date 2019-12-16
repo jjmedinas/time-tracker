@@ -20,6 +20,10 @@ class User < ApplicationRecord
     ActivityLog.where(user: self, active: true).first_or_create
   end
 
+  def full_name
+    "#{first_name} #{last_name}".titleize
+  end
+
   private
 
     def downcase_email
