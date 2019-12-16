@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Help filtering based on url params
 gem 'rack-reducer', require: 'rack/reducer'
 
+# User foreman to reload assets
+gem 'foreman'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

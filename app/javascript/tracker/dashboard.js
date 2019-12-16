@@ -18,7 +18,7 @@ $(document).ready(function() {
         alert('Logged in Correctly');
       },
       error: function() {
-        alert('Error loggin in');
+        alert('Error logging in');
       },
       dataType: "json"
     });
