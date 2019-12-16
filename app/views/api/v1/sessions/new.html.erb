@@ -1,16 +1,16 @@
 <div class="container col col-md-5">
   <div class="card">
     <div class="card-header card-header-primary">
-      <h4 class="card-title">TimeTracker</h4>
+      <h4 class="card-title">TimeTracker <%= current_user.try(:first_name) %></h4>
       <p class="card-category">Login</p>
     </div>
     <div class="card-body">
-      <form>
+      <form id="session-form">
         <div class="row justify-content-md-center">
           <div class="col-md-9">
             <div class="form-group">
               <label class="bmd-label-floating">Email*</label>
-              <input type="text" class="form-control">
+              <input id="session-email" name="email" type="text" class="form-control">
             </div>
           </div>
         </div>
@@ -19,7 +19,7 @@
           <div class="col-md-9">
             <div class="form-group">
               <label class="bmd-label-floating">Password*</label>
-              <input type="text" class="form-control">
+              <input id="session-password" name="password" type="password" class="form-control">
             </div>
           </div>
         </div>

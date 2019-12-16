@@ -1,6 +1,31 @@
 $(document).ready(function() {
-  $("#session-login").click(function(event){
-    alert('You clicked the Hide link');
-    event.preventDefault();
-  });
+
+  function submitForm ( e ) {
+    data = {
+      "session": {
+        "email": $('#session-email').val(),
+        "password": $('#session-password').val()
+      }
+    };
+
+    $.ajax({
+      type: "POST",
+      url: "/api/v1/sessions",
+      contentType: "application/json",
+      data: JSON.stringify(data),
+      processData: false,
+      success: function() {
+        alert('Logged in Correctly');
+      },
+      error: function() {
+        alert('Error loggin in');
+      },
+      dataType: "json"
+    });
+
+    e.preventDefault();
+  }
+
+
+  $("#session-login").click( submitForm );
 });
