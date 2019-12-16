@@ -37,7 +37,7 @@ $(document).ready(function() {
         window.location = '/'
       },
       error: function() {
-        alert('Error loggin out');
+        alert('User and password dont match.');
       },
       dataType: "json"
     });

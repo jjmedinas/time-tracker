@@ -7,24 +7,39 @@
     </div>
     <div class="sidebar-wrapper">
       <ul class="nav">
-        <li class="nav-item  ">
-          <a class="nav-link" href="" onclick="return false;">
-            <i class="material-icons">dashboard</i>
-            <p>Dashboard</p>
-          </a>
-        </li>
         <li class="nav-item active ">
           <a class="nav-link" href="" onclick="return false;">
-            <i class="material-icons">person</i>
+            <i class="material-icons">emoji_people</i>
             <p>User Profile</p>
           </a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="" onclick="return false;">
-            <i class="material-icons">library_books</i>
-            <p>Reports</p>
-          </a>
-        </li>
+        <% if current_user.admin? %>
+          <li class="nav-item  ">
+            <a class="nav-link" href="" onclick="return false;">
+              <i class="material-icons">supervised_user_circle</i>
+              <p>List Users</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="" onclick="return false;">
+              <i class="material-icons">assignment</i>
+              <p>Report</p>
+            </a>
+          </li>
+        <% else %>
+          <li class="nav-item ">
+            <a class="nav-link" href="" onclick="return false;">
+              <i class="material-icons">event</i>
+              <p>Track Time</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="" onclick="return false;">
+              <i class="material-icons">pageview</i>
+              <p>History</p>
+            </a>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -99,7 +114,7 @@
                 <p class="card-description">
                   Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
                 </p>
-                <a href="" onclick="return false;" class="btn btn-primary btn-round">Track Time</a>
+                <a href="" onclick="return false;" class="btn btn-primary btn-round"> Edit </a>
               </div>
             </div>
           </div>
