@@ -1,8 +1,7 @@
 # Time Tracker
 
-This is a web app created to track employee worked hours. It has a API backed wich provide all actions needed and a basic frontend wich consumes them. (API documentation can be found [here](https://app.swaggerhub.com/apis/jjmedinas/tracker/1.0.0))
+This is a web app created to track employee worked hours. It has an API backend wich provide all actions needed and a basic frontend wich consumes them. (API documentation can be found [here](https://app.swaggerhub.com/apis/jjmedinas/tracker/1.0.0))
 
-Product specification document and requirements can be found [here.](https://docs.google.com/document/d/1qnCGQfYhNUAQUI1bXVvIS1qL3omM35ssgazLLqUKhFA/edit?usp=sharing)
 
 #### Functional Requirements
 
@@ -34,7 +33,7 @@ Product specification document and requirements can be found [here.](https://doc
 
 #### Edge Cases
 - Users can’t checkout without checking in first
-- what to do when an user forgets checking out? (Show a notification? - Business logic decision)
+- What to do when an user forgets checking out? (Show a notification? - Business logic decision)
 
 #### Common Errors
  - 403 - You're not allowed to perform this action.
