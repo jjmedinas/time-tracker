@@ -36,4 +36,4 @@ en:
       bad_login: "Email and password don't match."
     models:
       cant_check_in: "Check in time already set. Can't to check in again."
-      cant_check_out: "Unable to check out. Please verify check in had place and hasn't already checked out"
+      cant_check_out: "Unable to check out. Please verify check in had place and hasn't already checked out."
