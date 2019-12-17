@@ -17,7 +17,9 @@ $(document).ready(function() {
       success: function() {
         window.location = '/dashboard'
       },
-      error: md.showLoginErrorNotification('top','center'),
+      error: function(jqXHR, textStatus, errorThrown){
+        md.showLoginErrorNotification('top','center')
+      },
       dataType: "json"
     });
 
