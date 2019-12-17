@@ -16,4 +16,11 @@ RSpec.describe User, type: :model do
       expect(user.email).to eq "foo@bar.com"
     end
   end
+
+  describe "#full_name" do
+    it "capitalizes first and last names and merge them" do
+      user = create(:user, first_name: "juan jose", last_name: "medina sarmiento")
+      expect(user.full_name).to eq "Juan Jose Medina Sarmiento"
+    end
+  end
 end

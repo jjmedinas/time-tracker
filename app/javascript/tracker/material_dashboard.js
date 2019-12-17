@@ -183,6 +183,21 @@ md = {
     });
   },
 
+  showLoginErrorNotification: function(from, align) {
+    $.notify({
+      icon: "add_alert",
+      message: "Email and password don't match."
+
+    }, {
+      type: 'danger',
+      timer: 3000,
+      placement: {
+        from: from,
+        align: align
+      }
+    });
+  },
+
   initDocumentationCharts: function() {
     if ($('#dailySalesChart').length != 0 && $('#websiteViewsChart').length != 0) {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
