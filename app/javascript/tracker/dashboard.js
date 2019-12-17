@@ -46,6 +46,8 @@ $(document).ready(function() {
     $('#user-profile-content').removeClass("hidden");
     $('#list-users-content').addClass("hidden");
     $('#all-users-report-content').addClass("hidden");
+    $('#track-time-content').addClass("hidden");
+    $('#history-content').addClass("hidden");
 
     $("#user-profile-nav").addClass("active")
     $("#list-users-nav").removeClass("active")
