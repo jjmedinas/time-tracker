@@ -18,7 +18,7 @@ $(document).ready(function() {
         window.location = '/dashboard'
       },
       error: function() {
-        alert('Error logging in');
+        alert('User and password dont match.');
       },
       dataType: "json"
     });
@@ -37,7 +37,7 @@ $(document).ready(function() {
         window.location = '/'
       },
       error: function() {
-        alert('User and password dont match.');
+        alert('Error logging out.');
       },
       dataType: "json"
     });
