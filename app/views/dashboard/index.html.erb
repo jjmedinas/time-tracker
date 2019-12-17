@@ -5,6 +5,7 @@
         Time Tracker
       </a>
     </div>
+    <input id="user_id" name="user_id" type="text" class="hidden" value="<%= current_user.id%>">
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="nav-item active" id="user-profile-nav">
@@ -343,7 +344,7 @@
                                 <i class="material-icons">alarm</i>
                               </div>
                               <p class="card-category">Before start working...</p>
-                              <button class="btn btn-success">Check in!</button>
+                              <button class="btn btn-success" id='check-in-button'>Check in!</button>
 
                             </div>
                             <div class="card-footer"></div>
@@ -356,7 +357,7 @@
                                 <i class="material-icons">check_circle</i>
                               </div>
                               <p class="card-category">Before start going home...</p>
-                              <button class="btn btn-warning">Check out!</button>
+                              <button class="btn btn-warning" id='check-out-button'>Check out!</button>
 
                             </div>
                             <div class="card-footer"></div>

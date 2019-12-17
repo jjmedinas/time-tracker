@@ -12,6 +12,8 @@ import '../tracker/bootstrap_custom'
 import '../tracker/material_dashboard'
 import '../tracker/dashboard'
 import '../tracker/bootstrap_notify'
+import '../tracker/track_time'
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

@@ -35,7 +35,7 @@ class Api::V1::ActivityLogsController < ApplicationController
     def set_user
       @user = User.find_by id: params[:user_id]
 
-      if @user.nil? # || ((current_user.id != @user.id) && (!current_user.admin?))
+      if @user.nil?
         return render json: { error: I18n.t("errors.requests.not_allowed") }, status: 400
       end
     end
