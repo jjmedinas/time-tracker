@@ -11,9 +11,11 @@ Rails.application.routes.draw do
       post "sessions", to: "sessions#create"
       delete "sessions", to: "sessions#destroy"
 
-      get 'users/:user_id/activity_logs/current', to: "activity_logs#current", as: :activity_logs_current
-      post 'users/:user_id/activity_logs/current/check_in', to: "activity_logs#check_in", as: :activity_logs_check_in
-      post 'users/:user_id/activity_logs/current/check_out', to: "activity_logs#check_out", as: :activity_logs_check_out
+      get "users/:user_id/activity_logs/current", to: "activity_logs#current", as: :activity_logs_current
+      post "users/:user_id/activity_logs/current/check_in", to: "activity_logs#check_in", as: :activity_logs_check_in
+      post "users/:user_id/activity_logs/current/check_out", to: "activity_logs#check_out", as: :activity_logs_check_out
+
+      get "users/activity_report", to: "activity_logs#report"
     end
   end
 end

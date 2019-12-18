@@ -12,10 +12,18 @@ class ActivityLog < ApplicationRecord
 
   def check_out!
     if can_check_out?
-      update!(checked_out_at: DateTime.now)
+      update!(checked_out_at: DateTime.now, active: false)
     else
       self.errors.add(:check_out, I18n.t("errors.models.cant_check_out"))
       raise ActiveRecord::RecordInvalid.new(self)
+    end
+  end
+
+  def worked_hours
+    if checked_in_at && checked_out_at
+      ((checked_out_at - checked_in_at) / 1.hour).round
+    else
+      0
     end
   end
 

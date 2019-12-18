@@ -7,7 +7,7 @@ RSpec.describe ActivityLog, type: :model do
 
   context "#check_in" do
     it "updates checked_in_at" do
-      activity_log = create(:activity_log)
+      activity_log = create(:empty_activity_log)
       expect(activity_log.checked_in_at).to be_nil
 
       activity_log.check_in!
@@ -16,7 +16,7 @@ RSpec.describe ActivityLog, type: :model do
     end
 
     it "raises an error if check in can't be done" do
-      activity_log = create(:activity_log, checked_in_at: 1.day.ago)
+      activity_log = create(:empty_activity_log, checked_in_at: 1.day.ago)
 
       expect { activity_log.check_in! }.to raise_error(ActiveRecord::RecordInvalid)
     end
@@ -24,7 +24,7 @@ RSpec.describe ActivityLog, type: :model do
 
   context "#check_out" do
     it "updates checked_out_at" do
-      activity_log = create(:activity_log, checked_in_at: DateTime.now)
+      activity_log = create(:empty_activity_log, checked_in_at: DateTime.now)
       expect(activity_log.checked_out_at).to be_nil
 
       activity_log.check_out!
@@ -34,7 +34,7 @@ RSpec.describe ActivityLog, type: :model do
 
     it "raises an error if check out can't be done" do
       # When activity log hasn't been checked in
-      activity_log = create(:activity_log)
+      activity_log = create(:empty_activity_log)
       expect { activity_log.check_out! }.to raise_error(ActiveRecord::RecordInvalid)
 
       # When activity log is already checked out

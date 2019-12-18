@@ -2,10 +2,20 @@ FactoryBot.define do
   factory :user do
     first_name { "John" }
     last_name  { "Doe" }
-    email { "joh--n@doe.com" }
     gender { "male" }
     password { "123456" }
     role { "employee" }
+    sequence(:email) { |n| "user-#{n}@email.com" }
+
+    factory :user_with_activity_logs do
+      transient do
+        activity_logs_count { 3 }
+      end
+
+      after(:create) do |user, evaluator|
+        create_list(:activity_log, evaluator.activity_logs_count, user: user)
+      end
+    end
   end
 
   factory :user_2, class: User do
