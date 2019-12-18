@@ -9,9 +9,6 @@ environment.plugins.prepend(
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
-    jquery: 'jquery',
-    'window.jQuery': 'jquery',
-    "window.$": "jquery",
     Popper: ['popper.js', 'default'],
     Rails: ['@rails/ujs']
   })
