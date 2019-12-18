@@ -29,8 +29,6 @@ RSpec.describe AllUsersReport, type: :model do
       expect(report.data).to match_array [[ users.first.full_name, users.first.email, 24 ],
                                           [ users.last.full_name, users.last.email, 24 ]]
 
-      activity_log = users.first.activity_logs.first
-      activity_log.update(checked_in_at: 1.year.ago, checked_out_at: 1.year.ago + 5.hours)
 
     end
 
