@@ -48,8 +48,6 @@ RSpec.describe AllUsersReport, type: :model do
       activity_log.update(checked_in_at: 1.day.ago.beginning_of_day + 10.hours,
                          checked_out_at: 1.day.ago.beginning_of_day + 15.hours)
 
-      byebug
-
       report = AllUsersReport.new(users, start_date: start_date, end_date: end_date)
 
       expect(report.data).to match_array [[ users.first.full_name, users.first.email, 21 ],
