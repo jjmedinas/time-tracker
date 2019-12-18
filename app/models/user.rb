@@ -10,6 +10,19 @@ class User < ApplicationRecord
   before_create :downcase_email
   enum role: { admin: "admin", employee: "employee" }
 
+  Reducer = Rack::Reducer.new(
+    User.where.not(role: "admin"),
+    ->(first_name:) { where('lower(first_name) like ?', "%#{first_name.downcase}%") },
+    ->(last_name:) { where('lower(last_name) like ?', "%#{last_name.downcase}%") },
+    ->(email:) { where('lower(email) like ?', "%#{email.downcase}%") },
+    ->(gender:) { where('lower(gender) = ?', gender.downcase) },
+    ->(sort: 'id') { order(sort.to_sym) }
+  )
+
+  def self.where_activity_logs(filters)
+    joins(:activity_logs).where(activity_logs: filters)
+  end
+
   def as_json(options)
     res = super(options)
     res.delete("password_digest")

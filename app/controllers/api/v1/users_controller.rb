@@ -3,19 +3,10 @@ class Api::V1::UsersController < ApplicationController
   before_action :authorize_admin!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  UserReducer = Rack::Reducer.new(
-    User.where.not(role: "admin"),
-    ->(first_name:) { where('lower(first_name) like ?', "%#{first_name.downcase}%") },
-    ->(last_name:) { where('lower(last_name) like ?', "%#{last_name.downcase}%") },
-    ->(email:) { where('lower(email) like ?', "%#{email.downcase}%") },
-    ->(gender:) { where('lower(gender) = ?', gender.downcase) },
-    ->(sort: 'id') { order(sort.to_sym) }
-  )
-
   # GET /api/v1/users
   # GET /api/v1/users.json
   def index
-    @users = UserReducer.apply(params)
+    @users = User::Reducer.apply(params)
 
     render json: @users, status: :ok
   end
