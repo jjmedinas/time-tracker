@@ -47,6 +47,7 @@ Some actions can be taken in order to improve the app:
 
 - Create a setup document with steps to run project. It can be added to this readme.
 - Implement a template engine (slim, haml) or event better add a frontend framework (react, vue, etc)
+- Improve frontend to consume backend services (forms, datepickers, etc)
 - Add integration tests with Capybara (It can be used to test login flow)
 - Add serialization (This is a cool [gem](https://github.com/Netflix/fast_jsonapi) to do so)
 - Improve foreman + webpacker setup

@@ -9,13 +9,14 @@ class User < ApplicationRecord
   has_many :activity_logs
   before_create :downcase_email
   enum role: { admin: "admin", employee: "employee" }
+  enum gender: { male: "m", female: "f" }
 
   Reducer = Rack::Reducer.new(
     User.where.not(role: "admin"),
     ->(first_name:) { where('lower(first_name) like ?', "%#{first_name.downcase}%") },
     ->(last_name:) { where('lower(last_name) like ?', "%#{last_name.downcase}%") },
     ->(email:) { where('lower(email) like ?', "%#{email.downcase}%") },
-    ->(gender:) { where('lower(gender) = ?', gender.downcase) },
+    ->(gender:) { where('lower(gender) like ?', "%#{gender.downcase}%") },
     ->(sort: 'id') { order(sort.to_sym) }
   )
 

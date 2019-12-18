@@ -31,14 +31,14 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   let(:valid_attributes) {
     {
       first_name: "foo", last_name: "bar", email: "foo@bar.com", role: 'employee',
-      gender: "male", password: "123456", password_confirmation: "123456"
+      gender: "m", password: "123456", password_confirmation: "123456"
     }
   }
 
   let(:invalid_attributes) {
     {
       first_name: "foo", last_name: "bar", email: "foobar.com",
-      role: 'employee', gender: "male"
+      role: 'employee', gender: "m"
     }
   }
 
@@ -60,9 +60,9 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     context "filters" do
       it "returns users that match query" do
 
-        create(:user, first_name: "Foo 1", gender: "male")
-        create(:user_2, first_name: "Foo 2", gender: "female")
-        create(:user_3, first_name: "Bar", gender: "male")
+        create(:user, first_name: "Foo 1", gender: "m")
+        create(:user_2, first_name: "Foo 2", gender: "f")
+        create(:user_3, first_name: "Bar", gender: "m")
 
         get :index, params: { sort: "first_name" }, session: valid_session
         expect(JSON.parse(response.body).count).to eq 3
@@ -74,7 +74,8 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         get :index, params: { first_name: "foo" }, session: valid_session
         expect(JSON.parse(response.body).count).to eq 2
 
-        get :index, params: { first_name: "foo", gender: "male" }, session: valid_session
+        get :index, params: { first_name: "foo", gender: "m" }, session: valid_session
+
         expect(JSON.parse(response.body).count).to eq 1
 
       end

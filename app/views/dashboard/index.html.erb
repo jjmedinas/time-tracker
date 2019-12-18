@@ -233,9 +233,9 @@
                   <p class="card-category"> Here is a report of worked hours</p>
                 </div>
                 <div class="card-body">
-                  <div class="table-responsive">
+                  <div class="table-responsive" id="all-users-report-table">
                     <table class="table">
-                      <thead class=" text-primary">
+                      <thead id="all-users-report-table-header">
                         <th>
                           ID
                         </th>
@@ -249,7 +249,7 @@
                           Gender
                         </th>
                       </thead>
-                      <tbody>
+                      <tbody id='all-users-report-table-content'>
                         <tr>
                           <td>
                             1
@@ -275,6 +275,35 @@
                 <div class="card-body">
                   <h6 class="card-category text-gray">Filters</h6>
                   <form id="all-users-report-form">
+
+                    <div class="row justify-content-md-center">
+                      <div class="col-md-10">
+                        <div class="">
+                          <label class="bmd-label-floating">Start date</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input id="all-users-report-filter-start-date" type="text" class="form-control">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row justify-content-md-center">
+                      <div class="col-md-10">
+                        <div class="">
+                          <label class="bmd-label-floating">End date</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input id="all-users-report-filter-end-date" type="text" class="form-control">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+
                     <div class="row justify-content-md-center">
                       <div class="col-md-10">
                         <div class="">
@@ -288,7 +317,7 @@
                       <div class="col-md-10">
                         <div class="">
                           <label class="bmd-label-floating">First Name</label>
-                          <input id="all-users-report-filter-first-name" name="password" type="password" class="form-control">
+                          <input id="all-users-report-filter-first-name" type="text" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -297,7 +326,7 @@
                       <div class="col-md-10">
                         <div class="">
                           <label class="bmd-label-floating">Last Name</label>
-                          <input id="all-users-report-filter-last-name" name="password" type="password" class="form-control">
+                          <input id="all-users-report-filter-last-name" type="text" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -306,11 +335,12 @@
                       <div class="col-md-10">
                         <div class="">
                           <label class="bmd-label-floating">Gender</label>
-                          <input id="all-users-report-filter-gender" name="password" type="password" class="form-control">
+                          <input id="all-users-report-filter-gender" type="text" class="form-control">
                         </div>
                       </div>
                     </div>
-                    <button id="all-users-report-submit" type="submit" class="btn btn-primary btn-round">Search</button>
+
+                    <button id="all-users-report-filter-submit" type="submit" class="btn btn-primary btn-round">Search</button>
                     <div class="clearfix"></div>
                   </form>
 

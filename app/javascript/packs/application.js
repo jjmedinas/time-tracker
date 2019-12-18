@@ -7,12 +7,14 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("bootstrap-datepicker")
 import '../stylesheets/application'
 import '../tracker/bootstrap_custom'
 import '../tracker/material_dashboard'
 import '../tracker/dashboard'
 import '../tracker/bootstrap_notify'
 import '../tracker/track_time'
+import '../tracker/all_users_report'
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
