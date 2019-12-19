@@ -53,5 +53,6 @@ $(document).ready(function() {
     e.preventDefault();
   }
 
+   $('#all-users-report-link').click( submitAllUsersReportFilter )
    $('#all-users-report-filter-submit').click( submitAllUsersReportFilter )
 });
