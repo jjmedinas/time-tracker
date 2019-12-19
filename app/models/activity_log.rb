@@ -21,7 +21,7 @@ class ActivityLog < ApplicationRecord
 
   def worked_hours
     if checked_in_at && checked_out_at
-      ((checked_out_at - checked_in_at) / 1.hour).round
+      ((checked_out_at - checked_in_at) / 1.hour.to_f).round(2)
     else
       0
     end
