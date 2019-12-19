@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       post "users/:user_id/activity_logs/current/check_out", to: "activity_logs#check_out", as: :activity_logs_check_out
 
       get "users/activity_report", to: "activity_logs#report"
+      get "users/:user_id/activity_report", to: "activity_logs#user_report"
 
       resources :users
     end

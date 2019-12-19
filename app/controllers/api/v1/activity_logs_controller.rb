@@ -21,6 +21,17 @@ class Api::V1::ActivityLogsController < ApplicationController
     end
   end
 
+  def check_out
+    begin
+      @activity_log.check_out!
+
+      return render json: @activity_log, status: :ok
+    rescue => e
+
+      return render json: { errors: e.record.errors}, status: 400
+    end
+  end
+
   def report
     @users = User::Reducer.apply(params)
     begin
@@ -34,14 +45,14 @@ class Api::V1::ActivityLogsController < ApplicationController
     end
   end
 
-  def check_out
+  def user_report
     begin
-      @activity_log.check_out!
+      report = UserReport.new(@user)
 
-      return render json: @activity_log, status: :ok
-    rescue => e
+      render json: report.to_json, status: :ok
+    rescue Exception => e
 
-      return render json: { errors: e.record.errors}, status: 400
+      render json: e, status: 500
     end
   end
 

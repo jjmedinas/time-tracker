@@ -94,4 +94,30 @@ RSpec.describe Api::V1::ActivityLogsController, type: :controller do
       end
     end
   end
+
+  describe "GET #user_report" do
+    context "When user is admin" do
+      it "returns http 403" do
+        user = create(:admin)
+
+        create_list(:user_with_activity_logs, 2)
+
+        get :user_report, params: { user_id: user.id}, session: { user_id: user.id }
+
+        should respond_with(403)
+      end
+    end
+
+    context "When user is employee" do
+      it "returns a success response" do
+        user = create(:user)
+
+        create(:user)
+
+        get :user_report, params: { user_id: user.id}, session: { user_id: user.id }
+
+        expect(response).to be_successful
+      end
+    end
+  end
 end
