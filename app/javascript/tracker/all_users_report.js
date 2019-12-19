@@ -34,7 +34,7 @@ $(document).ready(function() {
       "email": $('#all-users-report-filter-email').val(),
       "first_name": $('#all-users-report-filter-first-name').val(),
       "last_name": $('#all-users-report-filter-last-name').val(),
-      "gender": $('#all-users-report-filter-gender').val()
+      "gender": $('#all-users-report-filter-gender option:selected').val()
     }
 
     $.ajax({

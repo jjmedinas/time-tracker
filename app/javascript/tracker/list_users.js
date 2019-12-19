@@ -20,7 +20,7 @@ $(document).ready(function() {
       "email": $('#list-users-filter-email').val(),
       "first_name": $('#list-users-filter-first-name').val(),
       "last_name": $('#list-users-filter-last-name').val(),
-      "gender": $('#list-users-filter-gender').val()
+      "gender": $('#list-users-filter-gender option:selected').val()
     }
 
     $.ajax({
