@@ -16,6 +16,8 @@ import '../tracker/bootstrap_notify'
 import '../tracker/track_time'
 import '../tracker/all_users_report'
 import '../tracker/user_report'
+import '../tracker/sidebar_image'
+import '../tracker/list_users'
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

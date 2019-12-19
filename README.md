@@ -29,7 +29,8 @@ This is a web app created to track employee worked hours. It has an API backend 
 
 
 #### Screenshots
-![](screenshots.jpg)
+![](Admin.jpg)
+![](Employee.jpg)
 
 #### Edge Cases
 - Users can’t checkout without checking in first

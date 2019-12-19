@@ -27,6 +27,9 @@ class User < ApplicationRecord
   def as_json(options)
     res = super(options)
     res.delete("password_digest")
+    res.delete("role")
+    res.delete("created_at")
+    res.delete("updated_at")
     res
   end
 

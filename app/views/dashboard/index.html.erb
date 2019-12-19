@@ -1,5 +1,5 @@
 <div class="wrapper ">
-  <div class="sidebar" data-color="purple" data-background-color="white">
+  <div class="sidebar" data-color="purple" data-background-color="white" data-image=<%= image_url("sidebar_image.jpg") %>>
     <div class="logo">
       <a href="" onclick="return false;" class="simple-text logo-normal">
         Time Tracker
@@ -133,13 +133,16 @@
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table">
-                      <thead class=" text-primary">
+                    <table class="table" id="list-users-table">
+                      <thead class=" text-primary" id="list-users-table-header">
                         <th>
                           ID
                         </th>
                         <th>
-                          Name
+                          First Name
+                        </th>
+                        <th>
+                          Last Name
                         </th>
                         <th>
                           Email
@@ -148,7 +151,7 @@
                           Gender
                         </th>
                       </thead>
-                      <tbody>
+                      <tbody id="list-users-table-body">
                         <tr>
                           <td>
                             1
@@ -173,12 +176,12 @@
               <div class="card">
                 <div class="card-body">
                   <h6 class="card-category text-gray">Filters</h6>
-                  <form id="users-filter-form">
+                  <form id="list-users-filter-form">
                     <div class="row justify-content-md-center">
                       <div class="col-md-10">
                         <div class="">
                           <label class="bmd-label-floating">Email</label>
-                          <input id="users-filter-email" name="email" type="text" class="form-control">
+                          <input id="list-users-filter-email" name="email" type="text" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -187,7 +190,7 @@
                       <div class="col-md-10">
                         <div class="">
                           <label class="bmd-label-floating">First Name</label>
-                          <input id="users-filter-first-name" name="password" type="password" class="form-control">
+                          <input id="list-users-filter-first-name" name="first-name" type="text" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -196,7 +199,7 @@
                       <div class="col-md-10">
                         <div class="">
                           <label class="bmd-label-floating">Last Name</label>
-                          <input id="users-filter-last-name" name="password" type="password" class="form-control">
+                          <input id="list-users-filter-last-name" name="last-name" type="text" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -205,11 +208,15 @@
                       <div class="col-md-10">
                         <div class="">
                           <label class="bmd-label-floating">Gender</label>
-                          <input id="users-filter-gender" name="password" type="password" class="form-control">
+                          <select class="form-control" id="list-users-filter-gender">
+                            <option value=""></option>
+                            <option value="f">Female</option>
+                            <option value="m">Male</option>
+                          </select>
                         </div>
                       </div>
                     </div>
-                    <button id="users-filter-submit" type="submit" class="btn btn-primary btn-round">Search</button>
+                    <button id="list-users-filter-submit" type="submit" class="btn btn-primary btn-round">Search</button>
                     <div class="clearfix"></div>
                   </form>
 
@@ -237,23 +244,17 @@
                     <table class="table">
                       <thead id="all-users-report-table-header">
                         <th>
-                          ID
-                        </th>
-                        <th>
-                          Name
+                          User
                         </th>
                         <th>
                           Email
                         </th>
                         <th>
-                          Gender
+                          Worked hours
                         </th>
                       </thead>
                       <tbody id='all-users-report-table-content'>
                         <tr>
-                          <td>
-                            1
-                          </td>
                           <td>
                             Mason Porter
                           </td>
@@ -261,7 +262,7 @@
                             mason@porter.com
                           </td>
                           <td>
-                            male
+                            5
                           </td>
                         </tr>
                       </tbody>
@@ -335,7 +336,11 @@
                       <div class="col-md-10">
                         <div class="">
                           <label class="bmd-label-floating">Gender</label>
-                          <input id="all-users-report-filter-gender" type="text" class="form-control">
+                          <select class="form-control" id="all-users-report-filter-gender">
+                            <option value=""></option>
+                            <option value="f">Female</option>
+                            <option value="m">Male</option>
+                          </select>
                         </div>
                       </div>
                     </div>
