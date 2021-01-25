@@ -12,7 +12,7 @@ class User < ApplicationRecord
   enum gender: { male: "m", female: "f" }
 
   Reducer = Rack::Reducer.new(
-    User.where.not(role: "admin"),
+    self.all.where.not(role: "admin"),
     ->(first_name:) { where('lower(first_name) like ?', "%#{first_name.downcase}%") },
     ->(last_name:) { where('lower(last_name) like ?', "%#{last_name.downcase}%") },
     ->(email:) { where('lower(email) like ?', "%#{email.downcase}%") },
