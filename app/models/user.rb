@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   def self.where_activity_logs(filters)
     joins(:activity_logs).where(activity_logs: filters)
+                         .where.not(activity_logs: { checked_in_at: nil, checked_out_at: nil })
   end
 
   def as_json(options)
