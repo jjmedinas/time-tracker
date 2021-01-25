@@ -3,7 +3,7 @@ class UserReport
 
   def initialize(user)
     @user = user
-    @activity_logs = @user.activity_logs
+    @activity_logs = @user.activity_logs.where.not(activity_logs: { checked_in_at: nil, checked_out_at: nil })
   end
 
   def to_json
