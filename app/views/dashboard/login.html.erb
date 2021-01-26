@@ -1,10 +1,16 @@
 <div class="container col col-md-5">
   <div class="card">
+
     <div class="card-header card-header-primary">
       <h4 class="card-title">TimeTracker <%= current_user.try(:first_name) %></h4>
       <p class="card-category">Login</p>
     </div>
     <div class="card-body">
+    <div id='logo' class="logo">
+      <a href="" onclick="return false;" class="simple-text logo-normal">
+        Time Tracker
+      </a>
+    </div>
       <form id="session-form">
         <div class="row justify-content-md-center">
           <div class="col-md-9">

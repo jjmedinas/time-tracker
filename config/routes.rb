@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       get "users/:user_id/activity_report", to: "activity_logs#user_report"
 
       resources :users
+
+      post :clicks, to: 'clicks#update'
     end
   end
 end

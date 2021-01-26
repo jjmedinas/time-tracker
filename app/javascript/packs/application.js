@@ -18,6 +18,7 @@ import '../tracker/all_users_report'
 import '../tracker/user_report'
 import '../tracker/sidebar_image'
 import '../tracker/list_users'
+import '../tracker/track_clicks'
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

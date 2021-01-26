@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_secure_password
   has_many :activity_logs
+  has_one :click
   before_create :downcase_email
   enum role: { admin: "admin", employee: "employee" }
   enum gender: { male: "m", female: "f" }

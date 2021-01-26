@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_15_044948) do
+ActiveRecord::Schema.define(version: 2021_01_26_142109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2019_12_15_044948) do
     t.index ["user_id"], name: "index_activity_logs_on_user_id"
   end
 
+  create_table "clicks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "path"
+    t.integer "amount_clicks"
+    t.index ["user_id"], name: "index_clicks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -37,4 +44,5 @@ ActiveRecord::Schema.define(version: 2019_12_15_044948) do
   end
 
   add_foreign_key "activity_logs", "users"
+  add_foreign_key "clicks", "users"
 end
